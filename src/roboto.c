@@ -21,7 +21,7 @@
 
 PBL_APP_INFO(MY_UUID,
              "Roboto", "Bob Hauck <bobh@haucks.org",
-             1, 1, /* App version */
+             1, 2, /* App version */
              RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
 
@@ -49,6 +49,10 @@ typedef struct _TimeLayer
 Window window;          /* main window */
 TextLayer date_layer;   /* layer for the date */
 TimeLayer time_layer;   /* layer for the time */
+
+GFont font_date;        /* font for date (normal) */
+GFont font_hour;        /* font for hour (bold) */
+GFont font_minute;      /* font for minute (thin) */
 
 
 /* Called by the graphics layers when the time layer needs to be updated.
@@ -226,9 +230,6 @@ void handle_init(AppContextRef ctx)
     ResHandle res_d;
     ResHandle res_h;
     ResHandle res_m;
-    GFont font_date;
-    GFont font_hour;
-    GFont font_minute;
 
     window_init(&window, "Roboto");
     window_stack_push(&window, true /* Animated */);
@@ -267,6 +268,16 @@ void handle_init(AppContextRef ctx)
 }
 
 
+/* Shut down the application
+*/
+void handle_deinit(AppContextRef ctx)
+{
+    fonts_unload_custom_font(font_date);
+    fonts_unload_custom_font(font_hour);
+    fonts_unload_custom_font(font_minute);
+}
+
+
 /********************* Main Program *******************/
 
 void pbl_main(void *params)
@@ -274,6 +285,7 @@ void pbl_main(void *params)
     PebbleAppHandlers handlers =
     {
         .init_handler = &handle_init,
+        .deinit_handler = &handle_deinit,
         .tick_info =
         {
             .tick_handler = &handle_minute_tick,
