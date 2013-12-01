@@ -1,0 +1,45 @@
+{
+  "uuid": "5624529f-28e6-4d1b-b54d-e3e7387fd611",
+  "shortName": "Roboto",
+  "longName": "Roboto",
+  "companyName": "Bob Hauck <bobh@haucks.org",
+  "versionCode": 2,
+  "versionLabel": "2.0.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {},
+  "resources": {
+    "media": [
+      {
+        "menuIcon": true,
+        "type": "png",
+        "name": "IMAGE_MENU_ICON",
+        "file": "images/menu_icon_roboto.png"
+      },
+      {
+        "type": "font",
+        "name": "FONT_ROBOTO_CONDENSED_21",
+        "file": "fonts/Roboto-Condensed.ttf"
+      },
+      {
+        "characterRegex": "[:0-9]",
+        "type": "font",
+        "name": "FONT_ROBOTO_BOLD_SUBSET_53",
+        "file": "fonts/Roboto-Bold.ttf"
+      },
+      {
+        "characterRegex": "[:0-9]",
+        "type": "font",
+        "name": "FONT_ROBOTO_THIN_SUBSET_53",
+        "file": "fonts/Roboto-Thin.ttf"
+      },
+      {
+        "characterRegex": "[:0-9]",
+        "type": "font",
+        "name": "FONT_ROBOTO_LIGHT_SUBSET_53",
+        "file": "fonts/Roboto-Light.ttf"
+      }
+    ]
+  }
+}
